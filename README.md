@@ -124,13 +124,18 @@ https://raw.githubusercontent.com/Yu9191/wloc/refs/heads/main/modules/wloc.lpx
 <details>
 <summary><b>自部署 Worker（推荐）</b></summary>
 
-公共选点页面 `https://wloc-spoofer.wloc.workers.dev/` 有请求上限，建议部署自己的 Worker 实例。
+公共选点页面有请求上限，建议部署自己的实例：
 
-**一键部署：**
+- **Workers**: `https://wloc-spoofer.wloc.workers.dev/`
+- **Pages**: `https://wloc-pages.pages.dev/`
+
+**一键部署（Workers）：**
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Yu9191/wloc/tree/main/worker)
 
-**手动部署：**
+> 一键部署仅支持 Workers 模式，点击按钮后按提示授权即可完成部署。
+
+**手动部署（Workers）：**
 
 ```bash
 # 1. 克隆仓库
@@ -150,6 +155,24 @@ npm run deploy
 部署成功后会得到你自己的 Worker 地址（如 `https://wloc-spoofer.<你的子域名>.workers.dev`），用这个地址选点即可。
 
 > 免费账户每天 10 万次请求，个人使用完全够用。
+
+<details>
+<summary>高级：Pages 部署</summary>
+
+Pages 部署不支持一键按钮，需要手动执行：
+
+```bash
+git clone https://github.com/Yu9191/wloc.git
+cd wloc/worker
+npm install
+npx wrangler pages deploy dist --project-name <自定义项目名>
+```
+
+部署时会提示设置 production branch，输入 `main` 即可。部署成功后得到 `https://<项目名>.pages.dev` 地址。
+
+Pages 和 Workers 功能完全一致，按需选择即可。
+
+</details>
 
 </details>
 
